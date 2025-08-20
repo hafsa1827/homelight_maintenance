@@ -1,0 +1,37 @@
+from django.urls import path # type: ignore
+from .views import IssueListView,WaitingVarificationInvoiceListView,CalenderAPIView,UpdateInvoiceStatusAPIView,PaymentTransactionCreateView,RefundedInvoiceListView,OverdueInvoiceListView,PaidInvoiceListView,UnpaidInvoiceListView,UpdateTechnicianStatusAPIView,IssueTechnicanListView,CustomerRequestView,TroubleshootingUpdateView,UpdatingCustomerRequest_list,TroubleshootingCustomerPendingRequest_list,TroubleshootingCustomerInprogressRequest_list,TroubleshootingCustomerResolvedRequest_list,TroubleshootingCustomerDismissedRequest_list,requestResolvedId_list,requestInprogressId_list,RequestDismissedId_list,RequestListDismissed,troubleshootingList,TechnicianTroubleShootingCreateView,IssueRequestView,RequestInprogressAccept,RequestInprogressReject,RequestListInProgress,RequestListCompleted,RequestListPending,IssueRequestId,TechnicianServiceCreateView
+urlpatterns = [
+    
+    path('issues', IssueListView.as_view(), name='issues'),
+    path('issuesTechnician', IssueTechnicanListView.as_view(), name='issuesTechnician'),
+    path('issues_request', CustomerRequestView.as_view(), name='issues_request'),
+    path('issues_request_list', IssueRequestView.as_view(), name='issues_request_list'),
+    path('request_list', RequestListPending.as_view(), name='request_list'),
+    path('request_list_progess_accept', RequestInprogressAccept.as_view(), name='request_list_progess_accept'),
+    path('request_list_progess_reject', RequestInprogressReject.as_view(), name='request_list_progess_reject'),
+    path('request_list_completed', RequestListCompleted.as_view(), name='request_list_completed'),
+    path('requestId_list', IssueRequestId.as_view(), name='requestId_list'),
+    path('requestResolvedId_list', requestResolvedId_list.as_view(), name='requestResolvedId_list'),
+    path('requestDismissedId_list', RequestDismissedId_list.as_view(), name='requestDismissedId_list'),
+    path('requestInprogressId_list', requestInprogressId_list.as_view(), name='requestInprogressId_list'),
+    path('technician_service', TechnicianServiceCreateView.as_view(), name='technician_service'),
+    path('technician_troubleshooting', TechnicianTroubleShootingCreateView.as_view(), name='technician_troubleshooting'),
+    path('troubleshooting_list', troubleshootingList.as_view(), name='troubleshooting_list'),
+    path('troubleshooting_dismissed_list', RequestListDismissed.as_view(), name='troubleshooting_dismissed_list'),
+    path('customer_troubleshooting_dismissed_list', TroubleshootingCustomerDismissedRequest_list.as_view(), name='customer_troubleshooting_dismissed_list'),
+    path('customer_troubleshooting_resolved_list', TroubleshootingCustomerResolvedRequest_list.as_view(), name='customer_troubleshooting_resolved_list'),
+    path('customer_troubleshooting_inprogress_list', TroubleshootingCustomerInprogressRequest_list.as_view(), name='customer_troubleshooting_inprogress_list'),
+    path('customer_troubleshooting_pending_list', TroubleshootingCustomerPendingRequest_list.as_view(), name='customer_troubleshooting_pending_list'),
+    path('customer_troubleshooting_list', UpdatingCustomerRequest_list.as_view(), name='customer_troubleshooting_list'),
+    path('update_customer_troubleshooting/<uuid:trouble_shoot_id>/', TroubleshootingUpdateView.as_view(), name='update_customer_troubleshooting'),
+    path('update_technician_status', UpdateTechnicianStatusAPIView.as_view(), name='update_technician_status'),
+    path('unpaid_invoices', UnpaidInvoiceListView.as_view(), name='unpaid_invoices'),
+    path('paid_invoices', PaidInvoiceListView.as_view(), name='paid_invoices'),
+    path('overdue_invoices', OverdueInvoiceListView.as_view(), name='overdue_invoices'),
+    path('refunded_invoices', RefundedInvoiceListView.as_view(), name='refunded_invoices'),
+    path('waiting_varification_invoices', WaitingVarificationInvoiceListView.as_view(), name='waiting_varification_invoices'),
+    path('payment', PaymentTransactionCreateView.as_view(), name='payment'),
+    path('verify_payment', UpdateInvoiceStatusAPIView.as_view(), name='verify_payment'),
+    path('get_calender', CalenderAPIView.as_view(), name='get_calender'),
+
+]
